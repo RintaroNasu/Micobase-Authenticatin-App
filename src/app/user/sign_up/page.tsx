@@ -1,4 +1,5 @@
 "use client";
+import { User } from "@/types/user";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
@@ -7,6 +8,9 @@ export default function Sign_up() {
   const router = useRouter();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [users, setUsers] = useState<User>();
+  const [message, setMessage] = useState("");
+  const [error, setError] = useState("");
 
   const onChangeEmail = (event: React.ChangeEvent<HTMLInputElement>) => setEmail(event.target.value);
   const onChangePassword = (event: React.ChangeEvent<HTMLInputElement>) => setPassword(event.target.value);
@@ -24,9 +28,12 @@ export default function Sign_up() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
-      const data = await res.json();
-      console.log("サインアップ成功:", data);
-      router.push("/");
+      const { token, user, message, error } = await res.json();
+      if (token) {
+        localStorage.setItem("access_token", token);
+        console.log(token);
+        router.push("/user/dashboard");
+      }
     } catch (e) {
       console.log(e);
     }

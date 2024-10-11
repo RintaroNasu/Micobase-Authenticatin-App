@@ -1,6 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 import prisma from "../../../../../prisma/prisma";
+import jwt from "jsonwebtoken";
 
+const JWT_SECRET = process.env.JWT_SECRET;
 
 export async function POST(req: NextRequest) {
   const { email, password } = await req.json();
@@ -15,7 +17,10 @@ export async function POST(req: NextRequest) {
     if (user.password !== password) {
       return NextResponse.json({ error: "パスワードが間違っています" }, { status: 401 });
     }
-    return NextResponse.json({ message: "ログイン成功", user }, { status: 200 });
+    if (JWT_SECRET) {
+      const token = jwt.sign({ id: user.id, email: user.email }, JWT_SECRET, { expiresIn: "1h" });
+      return NextResponse.json({ message: "ログイン成功", user, token }, { status: 200 });
+    }
   } catch (e) {
     console.error("ログインエラー:", e);
     return NextResponse.json({ error: "ログイン処理中にエラーが発生しました" }, { status: 500 });

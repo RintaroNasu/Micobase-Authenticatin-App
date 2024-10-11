@@ -1,13 +1,8 @@
 "use client";
+import { User } from "@/types/user";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
-
-type User = {
-  id: number;
-  email: string;
-  password: string;
-};
 
 export default function Sign_in() {
   const router = useRouter();
@@ -32,10 +27,14 @@ export default function Sign_in() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
-      const { message, user, error } = await res.json();
+      const { token, message, user, error } = await res.json();
       setUsers(user);
       setMessage(message);
       setError(error);
+      if (token) {
+        localStorage.setItem("access_token", token);
+        router.push("/user/dashboard");
+      }
     } catch (e) {
       console.log(e);
     }
@@ -62,13 +61,6 @@ export default function Sign_in() {
       <Link href="/" className="hover:bg-gray-300 rounded px-4 py-2">
         ホームへ
       </Link>
-      <div>
-        <p>状況:{message}</p>
-        <p>ID: {users?.id}</p>
-        <p>Email: {users?.email}</p>
-        <p>Password: {users?.password}</p>
-        <p>エラー: {error}</p>
-      </div>
     </div>
   );
 }
