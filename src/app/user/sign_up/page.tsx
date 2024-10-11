@@ -46,7 +46,6 @@ export default function Sign_up() {
               ${email && password ? "bg-[rgba(0,164,150,1)] hover:bg-[rgba(0,106,118,1)] cursor-pointer" : "bg-[rgba(0,164,150,0.6)] cursor-not-allowed"}
             `}
           >
-            {" "}
             登録
           </button>
         </form>
