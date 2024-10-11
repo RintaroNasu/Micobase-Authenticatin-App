@@ -39,7 +39,14 @@ export default function Sign_up() {
         <form onSubmit={onSubmit} className="mt-8 w-full flex flex-col items-center">
           <input onChange={onChangeEmail} type="email" placeholder="メールアドレス" className="mb-3" />
           <input onChange={onChangePassword} type="password" placeholder="パスワード" className="mb-3" />
-          <button type="submit" className="rounded-[4px] bg-[rgba(0,164,150,1)] py-1 font-semibold text-white hover:bg-[rgba(0,106,118,1)] disabled:bg-[rgba(0,164,150,1) ml-2 h-11 w-[100px] px-2">
+          <button
+            type="submit"
+            disabled={!email || !password}
+            className={`rounded-[4px] py-1 font-semibold text-white ml-2 h-11 w-[100px] px-2 
+              ${email && password ? "bg-[rgba(0,164,150,1)] hover:bg-[rgba(0,106,118,1)] cursor-pointer" : "bg-[rgba(0,164,150,0.6)] cursor-not-allowed"}
+            `}
+          >
+            {" "}
             登録
           </button>
         </form>
