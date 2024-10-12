@@ -49,15 +49,15 @@ export default function Sign_up() {
           <button
             type="submit"
             disabled={!email || !password}
-            className={`rounded-[4px] py-1 font-semibold text-white ml-2 h-11 w-[100px] px-2 
+            className={`rounded-[4px] py-2 font-semibold text-white px-4 
               ${email && password ? "bg-[rgba(0,164,150,1)] hover:bg-[rgba(0,106,118,1)] cursor-pointer" : "bg-[rgba(0,164,150,0.6)] cursor-not-allowed"}
             `}
           >
-            登録
+            新規登録
           </button>
         </form>
       </div>
-      <Link href="/" className="hover:bg-gray-300 rounded px-4 py-2">
+      <Link href="/" className="rounded-[4px] border border-fg-primary bg-white py-2 font-semibold text-fg-primary hover:bg-gray-300 disabled:opacity-[0.38] px-4 text-center mt-5">
         ホームへ
       </Link>
     </div>
