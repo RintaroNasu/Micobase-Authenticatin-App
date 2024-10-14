@@ -21,19 +21,24 @@ export default function Home() {
   };
 
   return (
-    <div className="flex justify-center items-center gap-2 mt-10">
-      {!isLoggedIn && (
-        <>
-          <SkeltonButton href="/user/sign_in">ログイン</SkeltonButton>
-          <SkeltonButton href="/user/sign_up">新規登録</SkeltonButton>
-        </>
-      )}
-      {isLoggedIn && (
-        <>
-          <PrimaryButton onClick={onClickLogout}>ログアウト</PrimaryButton>
-          <SkeltonButton href="/user/dashboard">DashBoard</SkeltonButton>
-        </>
-      )}
-    </div>
+    <>
+      <div className="flex flex-col items-center gap-10 mt-12">
+        <p className="text-3xl font-semibold text-[rgba(0,164,150,1)]">MicroBase認証アプリ</p>
+        <div className="flex justify-center items-center gap-5">
+          {!isLoggedIn && (
+            <>
+              <SkeltonButton href="/user/sign_in">ログイン</SkeltonButton>
+              <SkeltonButton href="/user/sign_up">新規登録</SkeltonButton>
+            </>
+          )}
+          {isLoggedIn && (
+            <>
+              <PrimaryButton onClick={onClickLogout}>ログアウト</PrimaryButton>
+              <SkeltonButton href="/user/dashboard">DashBoard</SkeltonButton>
+            </>
+          )}
+        </div>
+      </div>
+    </>
   );
 }

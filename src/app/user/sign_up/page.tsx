@@ -22,7 +22,7 @@ export default function Sign_up() {
   const submit = async () => {
     const res = await signUp({ email, password });
     const token = res?.token;
-  
+
     if (token) {
       localStorage.setItem("access_token", token);
       successToast("新規登録に成功しました。");
@@ -33,12 +33,12 @@ export default function Sign_up() {
   };
 
   return (
-    <div className="flex flex-col items-center">
-      <div className="mx-auto w-[300px] pt-[30vh] text-center">
+    <div className="flex flex-col items-center mt-12">
+      <div className="mx-auto w-[300px] text-center">
         <div className="text-3xl font-semibold text-[rgba(0,164,150,1)]">サインアップ画面</div>
-        <form onSubmit={onSubmit} className="mt-8 w-full flex flex-col items-center mb-5">
-          <input onChange={onChangeEmail} type="email" placeholder="メールアドレス" className="mb-3" />
-          <input onChange={onChangePassword} type="password" placeholder="パスワード" className="mb-3" />
+        <form onSubmit={onSubmit} className="mt-8 w-full flex flex-col items-center mb-5 gap-4">
+          <input onChange={onChangeEmail} type="email" placeholder="メールアドレス" className="mb-3 rounded-[4px]" />
+          <input onChange={onChangePassword} type="password" placeholder="パスワード" className="mb-3 rounded-[4px]" />
           <PrimaryButton disabled={!email || !password}>新規登録</PrimaryButton>
         </form>
       </div>
