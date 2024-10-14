@@ -3,6 +3,7 @@ import { User } from "@/types/user";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 export default function Sign_in() {
   const router = useRouter();
@@ -31,9 +32,13 @@ export default function Sign_in() {
       setUsers(user);
       setMessage(message);
       setError(error);
+      console.log(error);
       if (token) {
         localStorage.setItem("access_token", token);
+        toast.success("ログインに成功しました。", { autoClose: 1500, pauseOnHover: false, hideProgressBar: true });
         router.push("/user/dashboard");
+      } else {
+        toast.error("ログインに失敗しました。", { autoClose: 1500, pauseOnHover: false, hideProgressBar: true });
       }
     } catch (e) {
       console.log(e);
