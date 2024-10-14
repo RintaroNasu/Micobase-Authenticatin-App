@@ -3,6 +3,7 @@ import { User } from "@/types/user";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 export default function Sign_up() {
   const router = useRouter();
@@ -33,6 +34,8 @@ export default function Sign_up() {
         localStorage.setItem("access_token", token);
         console.log(token);
         router.push("/user/dashboard");
+      } else {
+        toast.error("そのメールアドレスは既に使用されています。", { autoClose: 1500, pauseOnHover: false, hideProgressBar: true });
       }
     } catch (e) {
       console.log(e);
