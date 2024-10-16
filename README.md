@@ -9,7 +9,6 @@
 2. 依存パッケージをインストール
 ```
 npm install
-
 ```
 3. Next.jsとPrismaを接続させる
 
@@ -30,7 +29,7 @@ npm run dev
 ```
 
 ## 技術スタック
-・ フロントエンド: Next.js
-・ データベース: Postgress
-・ ORM:Prisma
-・ 認証:NextAuth
+・フロントエンド: Next.js<br>
+・データベース: Postgress<br>
+・ORM:Prisma<br>
+・認証:NextAuth<br>
