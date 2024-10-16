@@ -1,11 +1,14 @@
 "use client";
 import { PrimaryButton } from "@/components/buttons/PrimaryButton";
 import { SkeltonButton } from "@/components/buttons/SkeltonButton";
+import { successToast } from "@/utils/toast";
+import { signOut, useSession } from "next-auth/react";
 import { useRouter } from "next/navigation";
 import { useEffect, useState } from "react";
 
 export default function Home() {
   const router = useRouter();
+  const { data: session, status } = useSession();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
@@ -15,7 +18,7 @@ export default function Home() {
 
   const onClickLogout = () => {
     localStorage.removeItem("access_token");
-    console.log("ログアウトしました");
+    successToast("ログアウトしました。");
     setIsLoggedIn(false);
     router.push("/");
   };
@@ -25,13 +28,19 @@ export default function Home() {
       <div className="flex flex-col items-center gap-10 mt-12">
         <p className="text-3xl font-semibold text-[rgba(0,164,150,1)]">MicroBase認証アプリ</p>
         <div className="flex justify-center items-center gap-5">
-          {!isLoggedIn && (
+          {!isLoggedIn && status === "unauthenticated" && (
             <>
               <SkeltonButton href="/user/sign_in">ログイン</SkeltonButton>
               <SkeltonButton href="/user/sign_up">新規登録</SkeltonButton>
             </>
           )}
-          {isLoggedIn && (
+          {status === "authenticated" && (
+            <>
+              <PrimaryButton onClick={() => signOut()}>ログアウト</PrimaryButton>
+              <SkeltonButton href="/user/dashboard">DashBoard</SkeltonButton>
+            </>
+          )}
+          {isLoggedIn && status === "unauthenticated" && (
             <>
               <PrimaryButton onClick={onClickLogout}>ログアウト</PrimaryButton>
               <SkeltonButton href="/user/dashboard">DashBoard</SkeltonButton>
