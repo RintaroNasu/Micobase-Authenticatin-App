@@ -1,13 +1,17 @@
 "use client";
 import { PrimaryButton } from "@/components/buttons/PrimaryButton";
 import { SkeltonButton } from "@/components/buttons/SkeltonButton";
-import { signIn } from "@/utils/api/auth";
+import { signIn as customSignIn } from "@/utils/api/auth";
 import { errorToast, successToast } from "@/utils/toast";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
+import { FcGoogle } from "react-icons/fc";
+import { signIn as nextAuthSignIn, useSession } from "next-auth/react";
 
 export default function Sign_in() {
   const router = useRouter();
+  const { data: session, status } = useSession();
+  console.log(session, status);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -20,7 +24,7 @@ export default function Sign_in() {
   };
 
   const submit = async () => {
-    const res = await signIn({ email, password });
+    const res = await customSignIn({ email, password });
     const token = res?.token;
 
     if (token) {
@@ -42,6 +46,12 @@ export default function Sign_in() {
           <PrimaryButton disabled={!email || !password}>ログイン</PrimaryButton>
         </form>
       </div>
+      {status === "unauthenticated" && (
+        <button onClick={() => nextAuthSignIn("google", { callbackUrl: "/user/dashboard" }, { prompt: "login" })} className="rounded-[4px] border border-fg-primary bg-white py-2 font-semibold text-fg-primary hover:bg-gray-300 disabled:opacity-[0.38] px-4 text-center flex items-center mb-5">
+          <span>Googleでログイン</span>
+          <FcGoogle />
+        </button>
+      )}
       <SkeltonButton href="/">ホームへ</SkeltonButton>
     </div>
   );
