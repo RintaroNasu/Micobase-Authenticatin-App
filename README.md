@@ -18,7 +18,6 @@ npm install
 DATABASE_URL="*******************"
 JWT_SECRET="*******************"
 NEXTAUTH_SECRET="*******************"
-NEXTAUTH_URL="http://localhost:3000"
 GOOGLE_CLIENT_ID="*******************"
 GOOGLE_CLIENT_SECRET="*******************"
 FACEBOOK_CLIENT_ID="*******************"
