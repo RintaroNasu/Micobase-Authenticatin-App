@@ -7,14 +7,13 @@ import { useRouter } from "next/navigation";
 import { useState } from "react";
 import { FcGoogle } from "react-icons/fc";
 import { signIn as nextAuthSignIn, useSession } from "next-auth/react";
+import { FaFacebook } from "react-icons/fa";
 
 export default function Sign_in() {
   const router = useRouter();
   const { data: session, status } = useSession();
-  console.log(session, status);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
   const onChangeEmail = (event: React.ChangeEvent<HTMLInputElement>) => setEmail(event.target.value);
   const onChangePassword = (event: React.ChangeEvent<HTMLInputElement>) => setPassword(event.target.value);
 
@@ -47,10 +46,16 @@ export default function Sign_in() {
         </form>
       </div>
       {status === "unauthenticated" && (
-        <button onClick={() => nextAuthSignIn("google", { callbackUrl: "/user/dashboard" }, { prompt: "login" })} className="rounded-[4px] border border-fg-primary bg-white py-2 font-semibold text-fg-primary hover:bg-gray-300 disabled:opacity-[0.38] px-4 text-center flex items-center mb-5">
-          <span>Googleでログイン</span>
-          <FcGoogle />
-        </button>
+        <div className="">
+          <button onClick={() => nextAuthSignIn("google", { callbackUrl: "/user/dashboard" }, { prompt: "login" })} className="w-52 rounded-[4px] border border-fg-primary bg-white py-2 font-semibold text-fg-primary hover:bg-gray-300 disabled:opacity-[0.38] px-4   items-center mb-5 flex justify-center">
+            <span>Googleでログイン</span>
+            <FcGoogle />
+          </button>
+          <button onClick={() => nextAuthSignIn("facebook", { callbackUrl: "/user/dashboard" }, { prompt: "login" })} className="w-52 rounded-[4px] border border-fg-primary bg-white py-2 font-semibold text-fg-primary hover:bg-gray-300 disabled:opacity-[0.38] px-4 flex items-center mb-5 justify-center">
+            <span>FaceBookでログイン</span>
+            <FaFacebook />
+          </button>
+        </div>
       )}
       <SkeltonButton href="/">ホームへ</SkeltonButton>
     </div>

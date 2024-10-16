@@ -20,7 +20,6 @@ export default function dashboard() {
     const token = localStorage.getItem("access_token");
     if (status === "authenticated" && session?.user?.email) {
       setEmail(session.user.email);
-      console.log(email, status);
     } else if (status === "unauthenticated" && token && token.split(".").length === 3) {
       const decodedUser = jwtDecode<DecodedUser>(token);
       setEmail(decodedUser.email);
