@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 
 export default function Home() {
   const router = useRouter();
-  const { data: session, status } = useSession();
+  const { status } = useSession();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
   useEffect(() => {
@@ -26,7 +26,7 @@ export default function Home() {
   return (
     <>
       <div className="flex flex-col items-center gap-10 mt-12">
-        <p className="text-3xl font-semibold text-[rgba(0,164,150,1)]">MicroBase認証アプリ</p>
+        <p className="primary-title">MicroBase認証アプリ</p>
         <div className="flex justify-center items-center gap-5">
           {!isLoggedIn && status === "unauthenticated" && (
             <>

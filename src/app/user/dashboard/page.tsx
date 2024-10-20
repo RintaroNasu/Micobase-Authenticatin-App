@@ -11,7 +11,7 @@ type DecodedUser = {
   exp: number;
 };
 
-export default function dashboard() {
+export default function Dashboard() {
   const router = useRouter();
   const { data: session, status } = useSession();
   const [email, setEmail] = useState<string>();
@@ -30,7 +30,7 @@ export default function dashboard() {
 
   return (
     <div className="flex flex-col items-center mt-10 gap-5">
-      <h1 className="text-3xl font-semibold text-[rgba(0,164,150,1)]">Dashboard</h1>
+      <h1 className="primary-title">Dashboard</h1>
       <div>
         <p>メールアドレス:{email}</p>
       </div>
