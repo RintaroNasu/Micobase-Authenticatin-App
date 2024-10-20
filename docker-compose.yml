@@ -1,0 +1,29 @@
+version: '3'
+services:
+  # アプリケーションサービス
+  app:
+    build: .
+    ports:
+      - '3000:3000'  # ホストとコンテナのポートをバインド
+    environment:
+      - DATABASE_URL=postgresql://postgres:Rintaro6245@db:5432/mydb
+    depends_on:
+      - db  # データベースが起動してからアプリが起動する
+    volumes:
+      - .:/app  # ローカルのコードをコンテナ内にマウント（開発用）
+
+  # データベースサービス
+  db:
+    image: postgres:14  # PostgreSQLのイメージを使用
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Rintaro6245
+      POSTGRES_DB: Auth
+    volumes:
+      - postgres_data:/var/lib/postgresql/data  # データ永続化のためのボリューム
+    ports:
+      - "5432:5432"  # ホストとコンテナのポートをバインド
+
+# データ永続化のためのボリューム
+volumes:
+  postgres_data:
