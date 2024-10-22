@@ -16,6 +16,9 @@ npm install
 ```
 3. .envファイルを作成
 ```
+POSTGRES_USER=*******************
+POSTGRES_PASSWORD=*******************
+POSTGRES_DB=*******************
 DATABASE_URL="*******************"
 JWT_SECRET="*******************"
 NEXTAUTH_SECRET="*******************"
