@@ -3,17 +3,18 @@
 ## 概要
 ログイン・新規登録機能、NextAuthを実装したWebアプリケーションになります。
 
-## 開発環境の準備
-ローカル環境で開発サーバーを起動するための手順
+## 開発環境のセットアップ手順
+ローカル環境で開発サーバーを起動するための手順は以下の通りです。
 
-1. レポジトリをクローン
+1. リポジトリをクローン
+```
+git clone https://github.com/RintaroNasu/micobase-authenticatin-app.git
+```
 2. 依存パッケージをインストール
 ```
 npm install
 ```
-3. Next.jsとPrismaを接続させる
-
-4. .envファイルを作成
+3. .envファイルを作成
 ```
 DATABASE_URL="*******************"
 JWT_SECRET="*******************"
@@ -23,9 +24,23 @@ GOOGLE_CLIENT_SECRET="*******************"
 FACEBOOK_CLIENT_ID="*******************"
 FACEBOOK_CLIENT_SECRET="*******************"
 ```
-5. サーバー立ち上げる。
+4. Dockerイメージをビルド
 ```
-npm run dev
+docker compose build
+```
+5. コンテナを起動
+```
+docker compose up
+```
+6. PrismaClientのセットアップ
+```
+docker exec -it  <コンテナ_id> sh
+npx prisma generate
+npx prisma migrate dev --name init
+```
+7. 開発サーバーにアクセス
+```
+Webブラウザで http://localhost:3000 にアクセス
 ```
 
 ## 技術スタック
