@@ -1,7 +1,7 @@
 # Microbase Authentication App
 
 ## アプリ概要
-ログイン・新規登録機能、NextAuthを実装したWebアプリケーショ
+ ・ログイン・新規登録機能、NextAuthを実装したWebアプリケーション
 
 ---
 
@@ -20,6 +20,7 @@
   ・[NextJS](https://nestjs.com/): サーバーサイドレンダリング対応のReactフレームワーク<br>
   ・[Prisma](https://www.prisma.io/): データベースアクセスのためのORM<br>
   ・[JWT](https://jwt.io/): JWTを使用した認証管理<br>
+  ・[NextAuth](https://next-auth.js.org/):Next.js に簡単に認証機能を統合するためのライブラリ
   
 ### データベース
   ・[PostgresSQL](https://www.postgresql.org/docs/): リレーショナルデータベース管理システム
