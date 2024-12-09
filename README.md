@@ -44,16 +44,16 @@ npm install
 ```
 3. .envファイルを作成
 ```
-POSTGRES_USER=*******************
-POSTGRES_PASSWORD=*******************
-POSTGRES_DB=*******************
-DATABASE_URL="*******************"
-JWT_SECRET="*******************"
-NEXTAUTH_SECRET="*******************"
-GOOGLE_CLIENT_ID="*******************"
-GOOGLE_CLIENT_SECRET="*******************"
-FACEBOOK_CLIENT_ID="*******************"
-FACEBOOK_CLIENT_SECRET="*******************"
+POSTGRES_USER=your_postgres_user
+POSTGRES_PASSWORD=your_postgres_password
+POSTGRES_DB=your_postgres_db
+DATABASE_URL="postgresql://your_user:your_password@your_host:your_port/your_db"
+JWT_SECRET="your_jwt_secret"
+NEXTAUTH_SECRET="your_nextauth_secret"
+GOOGLE_CLIENT_ID="your_google_client_id"
+GOOGLE_CLIENT_SECRET="your_google_client_secret"
+FACEBOOK_CLIENT_ID="your_facebook_client_id"
+FACEBOOK_CLIENT_SECRET="your_facebook_client_secret"
 ```
 4. Dockerイメージをビルド
 ```
