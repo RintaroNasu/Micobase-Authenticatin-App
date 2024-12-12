@@ -1,32 +1,32 @@
 # Microbase Authentication App
 
 ## アプリ概要
- ・ログイン・新規登録機能、NextAuthを実装したWebアプリケーション
+ ・ログイン・新規登録機能、NextAuthを実装したWebアプリケーションになります。
 
 ---
 
 ## 技術スタック
 
 ### 使用言語
-  ・[TypeScript](https://www.typescriptlang.org/)
+  ・**[TypeScript](https://www.typescriptlang.org/)**
   
 ### フロントエンド 
-  ・[React](https://ja.react.dev/): ユーザーインターフェースの構築<br>
-  ・[Next.js (App Router)](https://nextjs.org/): サーバーサイドレンダリング対応のReactフレームワーク<br>
-  ・[TailwindCSS](https://tailwindcss.com/): カスタマイズ可能なCSSユーティリティ<br>
-  ・[React-Toastify](https://fkhadra.github.io/react-toastify/introduction/): トースト通知の表示ライブラリ<br>
+  ・**[React](https://ja.react.dev/)**: ユーザーインターフェースの構築<br>
+  ・**[Next.js (App Router)](https://nextjs.org/)**: サーバーサイドレンダリング対応のReactフレームワーク<br>
+  ・**[TailwindCSS](https://tailwindcss.com/)**: カスタマイズ可能なCSSユーティリティ<br>
+  ・**[React-Toastify](https://fkhadra.github.io/react-toastify/introduction/)**: トースト通知の表示ライブラリ<br>
   
 ### バックエンド
-  ・[NextJS](https://nestjs.com/): サーバーサイドレンダリング対応のReactフレームワーク<br>
-  ・[Prisma](https://www.prisma.io/): データベースアクセスのためのORM<br>
-  ・[JWT](https://jwt.io/): JWTを使用した認証管理<br>
-  ・[NextAuth](https://next-auth.js.org/):Next.js に簡単に認証機能を統合するためのライブラリ
+  ・**[NextJS](https://nestjs.com/)**: サーバーサイドレンダリング対応のReactフレームワーク<br>
+  ・**[Prisma](https://www.prisma.io/)**: データベースアクセスのためのORM<br>
+  ・**[JWT](https://jwt.io/)**: JWTを使用した認証管理<br>
+  ・**[NextAuth](https://next-auth.js.org/)**: Next.js に簡単に認証機能を統合するためのライブラリ
   
 ### データベース
-  ・[PostgresSQL](https://www.postgresql.org/docs/): リレーショナルデータベース管理システム
+  ・**[PostgresSQL](https://www.postgresql.org/docs/)**: リレーショナルデータベース管理システム
 
 ### インフラ
-  ・[Docker](https://docs.docker.com/): コンテナ化プラットフォームで環境構築を効率化<br>
+  ・**[Docker](https://docs.docker.com/)**: コンテナ化プラットフォームで環境構築を効率化<br>
 
 
 ---
